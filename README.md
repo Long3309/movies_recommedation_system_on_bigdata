@@ -1,6 +1,7 @@
 # myrecommender
 ## Kiến trúc xây dựng
 ![Toàn bộ kiến trúc](imgs/full-diagram.png)
+## [Link playlist demo sản phẩm](https://youtube.com/playlist?list=PLjNZz-5B7MzwRX8YN6q14nM-M-deb4OVV&feature=shared)
 
 ## Raw data
 - Dữ liệu raw của tập dữ liệu MovieLens được lưu trong [folder](data). Tập dữ liệu sử dụng để thực nghiệm là `movielens_1M`
@@ -27,33 +28,22 @@ Sử dụng KNN để thực hiện xây dựng hệ khuyến nghị
 ### Deep Learning
 Dùng model LightGCN để xây dựng hệ khuyến nghị
 GCNs có thể được sử dụng để mã hóa tín hiệu tương tác trong các embeddings. Các mục đã tương tác có thể được coi là đặc điểm của người dùng, vì chúng cung cấp bằng chứng trực tiếp về sở thích của người dùng. Tương tự, người dùng tiêu thụ một mục có thể được xem xét như là đặc điểm của mục và được sử dụng để đo lường sự tương đồng hợp tác giữa hai mục. Một cách tự nhiên để tích hợp tín hiệu tương tác vào nhúng là bằng cách khai thác kết nối cấp cao từ tương tác người dùng-mục.
+
 <img src="https://recodatasets.z20.web.core.windows.net/images/High_order_connectivity.png" width=500 style="display:block; margin-left:auto; margin-right:auto;">
+
 Để làm rõ hơn về phương pháp LigtGCN, ta cần quan tâm đến hai thiết kế chính: tổng hợp vùng lân cận trong lớp và kết hợp giữa các lớp.
 -	Trong mỗi lớp, đối với mỗi người trong đồ thị, tính toán việc cập nhật embeddings của nó dưới dạng tổng trọng số của các embeddings từ tất cả các mục lân cận của nó (phim) và ngược lại
 
-$$
-\begin{array}{l}
-\mathbf{e}_{u}^{(k+1)}=\sum_{i \in \mathcal{N}_{u}} \frac{1}{\sqrt{\left|\mathcal{N}_{u}\right|} \sqrt{\left|\mathcal{N}_{i}\right|}} \mathbf{e}_{i}^{(k)} \\
-\mathbf{e}_{i}^{(k+1)}=\sum_{u \in \mathcal{N}_{i}} \frac{1}{\sqrt{\left|\mathcal{N}_{i}\right|} \sqrt{\left|\mathcal{N}_{u}\right|}} \mathbf{e}_{u}^{(k)}
-\end{array}
-$$
-
 -	Khi kết hợp lớp, thay vì lấy embeddings của lớp K cuối cùng, LightGCN tính tổng có trọng số của các phần nhúng ở các lớp khác nhau 
-$$
 
-\mathbf{e}_{u}=\sum_{k=0}^{K} \alpha_{k} \mathbf{e}_{u}^{(k)} ; \quad \mathbf{e}_{i}=\sum_{k=0}^{K} \alpha_{k} \mathbf{e}_{i}^{(k)}
-$$
+
 <img src="https://recodatasets.z20.web.core.windows.net/images/lightGCN-model.jpg" width=600 style="display:block; margin-left:auto; margin-right:auto;">
 
 Mô hình dự đoán được định nghĩa là đo lường sự tương đồng giữa người dùng và phim, do đó cho phép dự đoán khả năng người dùng thích bộ phim đó.
 
-$$
-\hat{y}_{u i}=\mathbf{e}_{u}^{T} \mathbf{e}_{i}
-$$
+
 Để đào tạo mô hình, sử dụng hàm độ lỗi  Bayesian Personalized Ranking (BPR) khuyến khích dự đoán về một mục nhập gần kề cao hơn so với các mục không gần kề của nó:
-$$
-L_{B P R}=-\sum_{u=1}^{M} \sum_{i \in \mathcal{N}_{u}} \sum_{j \notin \mathcal{N}_{u}} \ln \sigma\left(\hat{y}_{u i}-\hat{y}_{u j}\right)+\lambda\left\|\mathbf{E}^{(0)}\right\|^{2}
-$$
+
 
 ## Curated
 - Để tổng hợp dữ liệu, chạy file [toCurated](toCurated.ipynb) để lưu dữ liệu bằng cách merge dữ liệu user, dữ liệu movies và dữ liệu ratings lại với nhau.
@@ -75,3 +65,4 @@ $$
 - Dùng Synapse Analytics để tiếp tục vận hành hệ thống đã xây dựng
 - Dùng PowerBI để truy cập dữ liệu mới để trực quan, tạo bảng Dashboard mới
 - Dùng CosMosDB để lưu trữ kết quả và xây dựng Web
+
