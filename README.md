@@ -1,6 +1,6 @@
 # myrecommender
 ## Kiến trúc xây dựng
-[!Toàn bộ kiến trúc](imgs/full-diagram.png)
+[! Toàn bộ kiến trúc](imgs/full-diagram.png)
 ## Raw data
 - Dữ liệu raw của tập dữ liệu MovieLens được lưu trong [folder](data). Tập dữ liệu sử dụng để thực nghiệm là `movielens_1M`
 - Dữ liệu được crawler, dùng python để download trong thư mực [movie_poster](crawler).
