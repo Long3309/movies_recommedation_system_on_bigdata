@@ -1,7 +1,6 @@
 # myrecommender
 ## Kiến trúc xây dựng
 ![Toàn bộ kiến trúc](imgs/full-diagram.png)
-## [Link playlist demo sản phẩm](https://youtube.com/playlist?list=PLjNZz-5B7MzwRX8YN6q14nM-M-deb4OVV&feature=shared)
 
 ## Raw data
 - Dữ liệu raw của tập dữ liệu MovieLens được lưu trong [folder](data). Tập dữ liệu sử dụng để thực nghiệm là `movielens_1M`
