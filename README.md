@@ -30,14 +30,17 @@ GCNs có thể được sử dụng để mã hóa tín hiệu tương tác tron
 <img src="https://recodatasets.z20.web.core.windows.net/images/High_order_connectivity.png" width=500 style="display:block; margin-left:auto; margin-right:auto;">
 Để làm rõ hơn về phương pháp LigtGCN, ta cần quan tâm đến hai thiết kế chính: tổng hợp vùng lân cận trong lớp và kết hợp giữa các lớp.
 -	Trong mỗi lớp, đối với mỗi người trong đồ thị, tính toán việc cập nhật embeddings của nó dưới dạng tổng trọng số của các embeddings từ tất cả các mục lân cận của nó (phim) và ngược lại
+
 $$
 \begin{array}{l}
 \mathbf{e}_{u}^{(k+1)}=\sum_{i \in \mathcal{N}_{u}} \frac{1}{\sqrt{\left|\mathcal{N}_{u}\right|} \sqrt{\left|\mathcal{N}_{i}\right|}} \mathbf{e}_{i}^{(k)} \\
 \mathbf{e}_{i}^{(k+1)}=\sum_{u \in \mathcal{N}_{i}} \frac{1}{\sqrt{\left|\mathcal{N}_{i}\right|} \sqrt{\left|\mathcal{N}_{u}\right|}} \mathbf{e}_{u}^{(k)}
 \end{array}
 $$
+
 -	Khi kết hợp lớp, thay vì lấy embeddings của lớp K cuối cùng, LightGCN tính tổng có trọng số của các phần nhúng ở các lớp khác nhau 
 $$
+
 \mathbf{e}_{u}=\sum_{k=0}^{K} \alpha_{k} \mathbf{e}_{u}^{(k)} ; \quad \mathbf{e}_{i}=\sum_{k=0}^{K} \alpha_{k} \mathbf{e}_{i}^{(k)}
 $$
 <img src="https://recodatasets.z20.web.core.windows.net/images/lightGCN-model.jpg" width=600 style="display:block; margin-left:auto; margin-right:auto;">
