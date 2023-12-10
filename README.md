@@ -49,11 +49,11 @@ Mô hình dự đoán được định nghĩa là đo lường sự tương đ�
 
 ## Visualize
 ### Dashboard ngày 8-12-2023
-![Alt text](imgs\08-12-2023.png)
+![Alt text](imgs/08-12-2023.png)
 ### Dashboard ngày 9-12-2023
-![Alt text](imgs\09-12-2023.png)
+![Alt text](imgs/09-12-2023.png)
 ### Dashboard ngày 10-12-2023
-![Alt text](imgs\10-12-2023.png)
+![Alt text](imgs/10-12-2023.png)
 
 
 # Tổng kết luồng xử lý
