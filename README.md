@@ -5,12 +5,13 @@
 ## Raw data
 - Dữ liệu raw của tập dữ liệu MovieLens được lưu trong [folder](data). Tập dữ liệu sử dụng để thực nghiệm là `movielens_1M`
 - Dữ liệu được crawler, dùng python để download trong thư mực [crawler](crawler).
-
-## Enrich data
-### Dữ liệu được tiền xử lý theo luồng sau:
 - Chuyển dữ liệu về dạng `.csv` và lưu vào folder [enrich](enrich)
 - Thêm tên các cột cho data: userID, itemID, rating, timestamp, ... (chạy file [changetocsv](notebooks\changetocsv.ipynb) để thực thi)
+## Enrich data
+### Dữ liệu được tiền xử lý theo luồng sau:
+- Về phương pháp content_based similarity: Dữ liệu được thu thập thêm được lưu ở file [movies_tags](raw/ml-1m-movies_tags.txt) có thêm thông tin về các mục của movies. Dữ liệu này sau khi qua file /notebooks/content_base.ipynb sẽ chuyển dữ liệu về dạng vector similarity, các vector này giúp ta lấy được thông tin các movies nào là tương tự nhau, từ đó xếp hạng độ tương đồng giữa các movies và giúp người dùng tìm được một bộ phim tương tự với phim mà mình đã xem.
 
+- Về phương pháp LightGCN: Sử dụng thuật toán đã build từ trước của microsoft, thuật toán này sẽ biến các node userID và movieID thành các vector embeddings, các vector này sẽ được cập nhập sau mỗi lần chạy bằng cách cộng tổng các vector emddings với các userID và movieID được kết nối với nó. Các vetor này được cập nhật ở mỗi lớp và sau đó cộng tổng có trọng số các lớp này lại với nhau. Sau đó dùng hàm độ lỗi để tối ưu thuật toán.
 
 ### Làm giàu dữ liệu
 - Tạo dữ liệu giả lập streaming bằng file [createStreamingdata](notebooks/createStreamingdata.ipynb) -> dữ liệu được tạo ra sẽ lưu trong folder raw chờ để đưa lên Azure Blob Storage

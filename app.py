@@ -35,11 +35,6 @@ movies = pd.read_csv("./enrich/movies.csv")
 def fetch_poster(movie_ids):
     # title = movies.iloc[movie_id].title
     list_url = list()
-    # try:
-    #     url = str(poster_data[poster_data["itemID"] == movie_id]["url"].values[0])
-    #     return url, title
-    # except:
-    #     return title
     for movieid in movie_ids:
         try:
             url = str(poster_data[poster_data["itemID"] == movieid]["url"].values[0])
