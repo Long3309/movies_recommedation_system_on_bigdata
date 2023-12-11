@@ -19,10 +19,10 @@
 ## Process
 - Sau khi chạy file [unionData](unionData.ipynb) sẽ lưu các ratings mới bằng cách lấy rating của ngày trước đó + ratings mới được tạo ra bước làm giàu dữ liệu. Ta thu dược folder mới chứa dữ liệu `ratings.csv` mới. Phục vụ cho mục đích huấn luyện
 
+## Content-based Similarity 
+Chạy file /notebooks/content_base.ipynb để lấy ra kết quả tính toán độ tương đồng giữa các movies, dựa trên tag movies mà nhóm thu thập được trên một dữ liệu khác. Link nguồn dữ liệu [source](https://github.com/xuChenSJTU/Movielens-1m-10m-20m-with-tags)
 
 ## Deep Learning & Recommendation Systems
-### KNN
-Sử dụng KNN để thực hiện xây dựng hệ khuyến nghị
 
 ### Deep Learning
 Dùng model LightGCN để xây dựng hệ khuyến nghị
