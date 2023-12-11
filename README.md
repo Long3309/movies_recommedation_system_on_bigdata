@@ -56,6 +56,9 @@ Mô hình dự đoán được định nghĩa là đo lường sự tương đ�
 ### Dashboard ngày 10-12-2023
 ![Alt text](imgs/10-12-2023.png)
 
+## Website Demo
+- Sản phẩm được xây dựng dựa trên streamlit
+- Link sản phẩm demo: [https://my-movies-recommendation-system.streamlit.app/](https://my-movies-recommendation-system.streamlit.app/)
 
 # Tổng kết luồng xử lý
 - Mỗi ngày, dữ liệu trên hệ thóng sẽ cập nhật mới về bằng Synapse Analytics
